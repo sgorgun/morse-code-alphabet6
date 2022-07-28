@@ -4,7 +4,7 @@ Beginner level task for practicing branching switch statements and binary litera
 
 The task is to implement two methods that should return Morse code sequence for Latin characters (A-Z, a-z). Use [International Morse Code](https://en.wikipedia.org/wiki/Morse_code) table.
 
-Estimated time to complete the task - 1.5h.
+Estimated time to complete the task - 1h.
 
 The task requires .NET 6 SDK installed.
 
