@@ -3,7 +3,7 @@
 namespace MorseCodeAlphabet.Tests
 {
     [TestFixture]
-    public class UsingSwitchTests
+    public class TranslatorTests
     {
         [TestCase('A', ExpectedResult = 0x31)]
         [TestCase('a', ExpectedResult = 0x31)]
@@ -57,14 +57,76 @@ namespace MorseCodeAlphabet.Tests
         [TestCase('y', ExpectedResult = 0xF2)]
         [TestCase('Z', ExpectedResult = 0xFC)]
         [TestCase('z', ExpectedResult = 0xFC)]
-        [TestCase(' ', ExpectedResult = 0x00)]
-        [TestCase('+', ExpectedResult = 0x00)]
-        [TestCase('0', ExpectedResult = 0x00)]
-        [TestCase('9', ExpectedResult = 0x00)]
-        public byte GetMorseCode(char c)
+        public byte TryTranslateToMorseCode_ReturnsTrue(char @char)
         {
             // Act
-            return UsingSwitch.GetMorseCode(c);
+            bool result = Translator.TryTranslateToMorseCode(@char, out byte @byte);
+
+            // Assert
+            Assert.That(result, Is.True);
+            return @byte;
+        }
+
+        [TestCase(' ')]
+        [TestCase('.')]
+        [TestCase('+')]
+        [TestCase('0')]
+        [TestCase('9')]
+        public void TryTranslateToMorseCode_ReturnsFalse(char @char)
+        {
+            // Act
+            bool result = Translator.TryTranslateToMorseCode(@char, out byte @byte);
+
+            // Assert
+            Assert.That(result, Is.False);
+            Assert.That(@byte, Is.EqualTo(0x00));
+        }
+
+        [TestCase(0x31, ExpectedResult = 'A')]
+        [TestCase(0xFE, ExpectedResult = 'B')]
+        [TestCase(0xFA, ExpectedResult = 'C')]
+        [TestCase(0x76, ExpectedResult = 'D')]
+        [TestCase(0x11, ExpectedResult = 'E')]
+        [TestCase(0xFB, ExpectedResult = 'F')]
+        [TestCase(0x74, ExpectedResult = 'G')]
+        [TestCase(0xFF, ExpectedResult = 'H')]
+        [TestCase(0x33, ExpectedResult = 'I')]
+        [TestCase(0xF1, ExpectedResult = 'J')]
+        [TestCase(0x72, ExpectedResult = 'K')]
+        [TestCase(0xFD, ExpectedResult = 'L')]
+        [TestCase(0x30, ExpectedResult = 'M')]
+        [TestCase(0x32, ExpectedResult = 'N')]
+        [TestCase(0x70, ExpectedResult = 'O')]
+        [TestCase(0xF9, ExpectedResult = 'P')]
+        [TestCase(0xF4, ExpectedResult = 'Q')]
+        [TestCase(0x75, ExpectedResult = 'R')]
+        [TestCase(0x77, ExpectedResult = 'S')]
+        [TestCase(0x10, ExpectedResult = 'T')]
+        [TestCase(0x73, ExpectedResult = 'U')]
+        [TestCase(0xF7, ExpectedResult = 'V')]
+        [TestCase(0x71, ExpectedResult = 'W')]
+        [TestCase(0xF6, ExpectedResult = 'X')]
+        [TestCase(0xF2, ExpectedResult = 'Y')]
+        [TestCase(0xFC, ExpectedResult = 'Z')]
+        public char TryTranslateFromMorse_ReturnsTrue(byte @byte)
+        {
+            // Act
+            bool result = Translator.TryTranslateFromMorse(@byte, out char @char);
+
+            // Assert
+            Assert.That(result, Is.True);
+            return @char;
+        }
+
+        [TestCase(0x00)]
+        public void TryTranslateFromMorse_ReturnsFalse(byte @byte)
+        {
+            // Act
+            bool result = Translator.TryTranslateFromMorse(@byte, out char @char);
+
+            // Assert
+            Assert.That(result, Is.False);
+            Assert.That(@char, Is.EqualTo(' '));
         }
     }
 }
