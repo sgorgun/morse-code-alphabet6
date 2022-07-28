@@ -23,11 +23,11 @@ Read more about hexadecimal and binary numbers first!
 
 [Byte is C#](https://docs.microsoft.com/en-us/dotnet/api/system.byte) is a data structure that can store 8-bit unsigned integer. Each bit in byte has its own position that starts with 0. The first bit has position 0, the last bit has position 7. Usually, we put the first bit on the right side, and the last bit on the left side.
 
-An example of a 0 number in binary form.
+An example of a 1 number in binary form.
 
 | Bit position  | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 |---------------|---|---|---|---|---|---|---|---|
-| Bit           | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Bit           | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 
 Each bit can be set to 1 or 0. Here's an example of decimal number `15`. In binary form the literal looks like `0b0000_1111` and it is equals to `0x0F` in hex form.
 
