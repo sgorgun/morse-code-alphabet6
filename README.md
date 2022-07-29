@@ -14,10 +14,12 @@ The task requires .NET 6 SDK installed.
 1. Implement the [TryTranslateToMorseCode](MorseCodeAlphabet/Translator.cs#L5) method using the `switch` statement.
     * If the `@char` parameter is a letter, the method should return `true` and set the `@byte` parameter to the binary representation of the relevant Morse code.
     * If the `@char` parameter is not a letter, the method should return `false` and set the `@byte` parameter to `0`.
+    * In `case` blocks use literals in the *binary* form.
 
 2. Implement the [TryTranslateFromMorse](MorseCodeAlphabet/Translator.cs#L22) method using the `switch` statement.
     * If the `@byte` parameter is a valid Morse code, the method should return `true` and set the `@char` parameter to the relevant uppercase character.
     * If the `@byte` parameter is not a valid Morse code, the method should return `false` and set the `@char` parameter to the white-space character.
+    * In `case` blocks use literals in the *binary* form.
 
 Read more about hexadecimal and binary numbers first!
 
